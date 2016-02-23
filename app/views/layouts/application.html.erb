@@ -1,20 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Finalproject</title>
+  <title>Final Project</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 
- 		<meta charset='utf-8' />
-    <title></title>
-    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.14.2/mapbox-gl.js'></script>
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.14.2/mapbox-gl.css' rel='stylesheet' />
-    <style>
-        body { margin:0; padding:0; }
-        #map { position:absolute; top:0; bottom:0; width:50%; }
-    </style>
 
 
 </head>
@@ -23,43 +14,14 @@
 
 	<div class="jumbotron">
     <h2>Alison's Final Project</h2>
-		<h6>Map something!</h6>
+		<h6>We're all part centaur</h6>
   </div>
 
-<div class="container">
+<div class="container col-md-5">
 	<%= yield %>
 </div>
+	<%= render 'mapform' %>
 
-<div id='map'></div>
-<script>
-mapboxgl.accessToken = 'pk.eyJ1IjoiYWZoaWdodCIsImEiOiJjaWt5NWEwNjkwMHk3dXltM2tobnR6NHpqIn0.Ad-osTktpPH_b7X4K0wZTg';
-var map = new mapboxgl.Map({
-    container: 'map', // container id
-    style: 'mapbox://styles/mapbox/streets-v8', //stylesheet location
-    center: [-97.75, 30.25], // starting position
-    zoom: 12 // starting zoom
-});
-
-map.on('style.load', function () {
-    map.addSource('terrain-data', {
-        type: 'vector',
-        url: 'mapbox://mapbox.mapbox-terrain-v2'
-    });
-    map.addLayer({
-        "id": "terrain-data",
-        "type": "line",
-        "source": "terrain-data",
-        "source-layer": "contour",
-        "layout": {
-            "line-join": "round",
-            "line-cap": "round"
-        },
-        "paint": {
-            "line-color": "#ff69b4",
-            "line-width": 1
-        }
-    });
-});
 </script>
 
 </body>

@@ -1,0 +1,102 @@
+<head>
+        <meta charset='utf-8' />
+    <title>Map Form</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=yes' />
+   
+    
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:50%; }
+    </style>
+
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.12.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.14.2/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v0.1.0/mapbox-gl-geocoder.js'></script>
+
+    <link href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v0.1.0/mapbox-gl-geocoder.css' rel='stylesheet' />
+
+    <script>
+    mapboxgl.accessToken = '<YOUR_ACCESS_TOKEN>';
+
+    var map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v8',
+      center: [-79.45, 43.65]
+    });
+
+    map.addControl(new mapboxgl.Geocoder());
+    </script>
+
+
+</head>
+<body>
+
+
+
+
+<div id='map'>
+
+<div id='menu'><p><b>Choose a View:</b></p>
+<!--     <input id='basic' type='radio' name='rtoggle' value='basic' checked='checked'>
+    <label for='basic'>Basic</label> -->
+    <input id='streets' type='radio' name='rtoggle' value='streets'>
+    <label for='streets'>Basic</label>
+    <input id='emerald' type='radio' name='rtoggle' value='emerald'>
+    <label for='emerald'>Bright</label>
+<!--     <input id='bright' type='radio' name='rtoggle' value='bright'>
+    <label for='bright'>Bright</label>
+    <input id='light' type='radio' name='rtoggle' value='light'>
+    <label for='light'>Light</label> -->
+    <input id='dark' type='radio' name='rtoggle' value='dark'>
+    <label for='dark'>Dark</label>
+    <input id='satellite' type='radio' name='rtoggle' value='satellite'>
+    <label for='satellite'>Satellite</label>
+</div>
+
+
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoiYWZoaWdodCIsImEiOiJjaWt5NWEwNjkwMHk3dXltM2tobnR6NHpqIn0.Ad-osTktpPH_b7X4K0wZTg';
+var map = new mapboxgl.Map({
+    container: 'map', // container id
+    style: 'mapbox://styles/mapbox/streets-v8', //stylesheet location
+    center: [-97.75, 30.25], // starting position
+    zoom: 12 // starting zoom
+});
+
+var layerList = document.getElementById('menu');
+var inputs = layerList.getElementsByTagName('input');
+
+function switchLayer(layer) {
+    var layerId = layer.target.id;
+    map.setStyle('mapbox://styles/mapbox/' + layerId + '-v8');
+}
+
+for (var i = 0; i < inputs.length; i++) {
+    inputs[i].onclick = switchLayer;
+}
+
+
+
+map.on('style.load', function () {
+    map.addSource('terrain-data', {
+        type: 'vector',
+        url: 'mapbox://mapbox.mapbox-terrain-v2'
+    });
+    map.addLayer({
+        "id": "terrain-data",
+        "type": "line",
+        "source": "terrain-data",
+        "source-layer": "contour",
+        "layout": {
+            "line-join": "round",
+            "line-cap": "round"
+        },
+        "paint": {
+            "line-color": "#ff69b4",
+            "line-width": 1
+        }
+    });
+});
+</script>
+</div>
+</body>
