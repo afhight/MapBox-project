@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Final Project</title>
+  <%= Gon::Base.render_data({}) %>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
@@ -17,10 +18,10 @@
 		<h6>We're all part centaur</h6>
   </div>
 
-<div class="container col-md-5">
+<!-- <div class="container col-md-5"> -->
 	<%= yield %>
-</div>
-	<%= render 'mapform' %>
+<!-- </div> -->
+	<%#= render 'mapform' %>
 
 </script>
 

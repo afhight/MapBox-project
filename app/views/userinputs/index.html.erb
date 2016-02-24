@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Userinputs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Location1</th>
+      <th>Location2</th>
+      <th>Location3</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @userinputs.each do |userinput| %>
+      <tr>
+        <td><%= userinput.location1 %></td>
+        <td><%= userinput.location2 %></td>
+        <td><%= userinput.location3 %></td>
+        <td><%= link_to 'Show', userinput %></td>
+        <td><%= link_to 'Edit', edit_userinput_path(userinput) %></td>
+        <td><%= link_to 'Destroy', userinput, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Userinput', new_userinput_path %>

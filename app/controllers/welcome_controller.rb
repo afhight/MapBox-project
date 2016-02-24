@@ -6,6 +6,11 @@ class WelcomeController < ApplicationController
   end
 
   def map
+  	@userinput = Userinput.new
+  	@userinputs = Userinput.all
+
+  	gon.userinput = @userinput
+
   end
 
   def more
