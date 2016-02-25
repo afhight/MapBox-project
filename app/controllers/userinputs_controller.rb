@@ -69,6 +69,6 @@ class UserinputsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def userinput_params
-      params.require(:userinput).permit(:location1, :location2, :location3)
+      params.require(:userinput).permit(:location1, :location2, :location3, :latitude1, :longitude1, :latitude2, :longitude2, :latitude3, :longitude3 )
     end
 end

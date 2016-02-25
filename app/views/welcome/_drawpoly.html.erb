@@ -11,24 +11,63 @@
 <body>
 
 
-<div id='map'></div>
+<div id='map'>
+<div id='menu'>
+    <!-- <p><b>Choose a View:</b></p> -->
+<!--     <input id='basic' type='radio' name='rtoggle' value='basic' checked='checked'>
+    <label for='basic'>Basic</label> -->
+    <input id='streets' type='radio' name='rtoggle' value='streets'>
+    <label for='streets'>Basic</label>
+    <input id='emerald' type='radio' name='rtoggle' value='emerald'>
+    <label for='emerald'>Bright</label>
+<!--     <input id='bright' type='radio' name='rtoggle' value='bright'>
+    <label for='bright'>Bright</label>
+    <input id='light' type='radio' name='rtoggle' value='light'>
+    <label for='light'>Light</label> -->
+    <input id='dark' type='radio' name='rtoggle' value='dark'>
+    <label for='dark'>Dark</label>
+    <input id='satellite' type='radio' name='rtoggle' value='satellite'>
+    <label for='satellite'>Satellite</label>
+</div>
+
+</div>
 <pre id='info'></pre>
+
+
 <script>
+
+var layerList = document.getElementById('menu');
+var inputs = layerList.getElementsByTagName('input');
+
+function switchLayer(layer) {
+    var layerId = layer.target.id;
+    map.setStyle('mapbox://styles/mapbox/' + layerId + '-v8');
+}
+
+for (var i = 0; i < inputs.length; i++) {
+    inputs[i].onclick = switchLayer;
+}
+
+
 
 // set  var usercoords to 'lat, long' variables that are created from the user input
 
 var userinput = gon.userinput
+var usercoords = [userinput.latitude1, userinput.longitude1]
 
 if(userinput.id == null) {
     console.log(userinput);
     var usercoords = [-68.13734351262877, 45.137451890638886];
 } else {
-    var usercoords = [-68.13734351262877, 45.137451890638886]; // the dynamically coded variables
+    var usercoords; // the dynamically coded variables
 }
+
+
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiYWZoaWdodCIsImEiOiJjaWt5NWEwNjkwMHk3dXltM2tobnR6NHpqIn0.Ad-osTktpPH_b7X4K0wZTg';
 
-    var map = new mapboxgl.Map({
+
+var map = new mapboxgl.Map({
     container: 'map', // container id
     style: 'mapbox://styles/mapbox/streets-v8',
     center: usercoords,    

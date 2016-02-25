@@ -11,17 +11,33 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field form-group">
     <%= f.text_field :location1, placeholder: "Where would you like to center the map?" %>
+  </div>
+  <div class="field form-group">
+    <%= f.label :latitude1 %><br>
+    <%= f.text_field :latitude1, class: "form-control" %>
+  </div>
+   <div class="field form-group">
+    <%= f.label :longitude1 %><br>
+    <%= f.text_field :longitude1, class: "form-control" %>
   </div>
   <% if current_page?('/userinputs/map') %>
     <div class="field">
       <%= f.text_field :location2, placeholder: "Name of new polygon:" %>
     </div>
   <% end %>
-  <!-- <div class="field">
+  <!-- <div class="field form-group">
     <%#= f.label :location3 %><br>
     <%#= f.text_field :location3 %>
+  </div> -->
+ <!--    <div class="field form-group">
+    <%#= f.label :latitude3 %><br>
+    <%#= f.text_field :latitude3, class: "form-control" %>
+  </div>
+   <div class="field form-group">
+    <%#= f.label :longitude3 %><br>
+    <%#= f.text_field :longitude3, class: "form-control" %>
   </div> -->
   <div class="actions">
     <%= f.submit "Go!" %>
