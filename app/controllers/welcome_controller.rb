@@ -6,10 +6,17 @@ class WelcomeController < ApplicationController
   end
 
   def map
-  	@userinput = Userinput.new
+    @userinput = Userinput.new
+    if params[:origin] == nil
+      gon.userinput = @userinput
+    else
+      @user_input = Userinput.last
+      gon.userinput = @user_input
+    end
+
   	@userinputs = Userinput.all
 
-  	gon.userinput = @userinput
+  	
 
   end
 

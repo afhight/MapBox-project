@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160225143955) do
+ActiveRecord::Schema.define(version: 20160302184218) do
 
   create_table "homes", force: :cascade do |t|
     t.string   "index"
@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(version: 20160225143955) do
     t.float    "longitude2"
     t.float    "latitude3"
     t.float    "longitude3"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
 end

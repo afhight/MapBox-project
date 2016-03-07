@@ -24,17 +24,18 @@ class UserinputsController < ApplicationController
   # POST /userinputs
   # POST /userinputs.json
   def create
-    @userinput = Userinput.new(userinput_params)
+    @userinput = Userinput.create(userinput_params)
 
-    respond_to do |format|
-      if @userinput.save
-        format.html { redirect_to @userinput, notice: 'Userinput was successfully created.' }
-        format.json { render :show, status: :created, location: @userinput }
-      else
-        format.html { render :new }
-        format.json { render json: @userinput.errors, status: :unprocessable_entity }
-      end
-    end
+    redirect_to map_path(origin: "create")
+    # respond_to do |format|
+    #   if @userinput.save
+    #     format.html { redirect_to @userinput, notice: 'Userinput was successfully created.' }
+    #     format.json { render :show, status: :created, location: @userinput }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @userinput.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /userinputs/1
@@ -69,6 +70,6 @@ class UserinputsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def userinput_params
-      params.require(:userinput).permit(:location1, :location2, :location3, :latitude1, :longitude1, :latitude2, :longitude2, :latitude3, :longitude3 )
+      params.require(:userinput).permit(:location1, :location2, :location3, :latitude, :longitude, :latitude1, :longitude1, :latitude2, :longitude2, :latitude3, :longitude3 )
     end
 end

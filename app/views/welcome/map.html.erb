@@ -8,8 +8,13 @@
 </div>
 
 
-
-
-
-
+<% if @ui.nil? %>
+	<%= javascript_tag do %>
+ 
+	<% end %>
+<% else %>
+	<%= javascript_tag do %>
+		
+	<% end %>
+<% end %>
 <%= render 'welcome/drawpoly' %>

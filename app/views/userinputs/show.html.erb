@@ -5,17 +5,14 @@
   <%= @userinput.location1 %>
 </p>
 
-<p>
-  <strong>Location2:</strong>
-  <%= @userinput.location2 %>
-</p>
-
-<p>
-  <strong>Location3:</strong>
-  <%= @userinput.location3 %>
-</p>
 
 <%= link_to 'Edit', edit_userinput_path(@userinput) %> |
 <%= link_to 'Back', userinputs_path %>
 
+<%= javascript_tag do %>
+ latitude = '<%= j @userinput.latitude.to_s %>';
+ longitude = '<%= j @userinput.longitude.to_s %>';
+<% end %>
+
+<% render 'welcome/drawpoly'
 
